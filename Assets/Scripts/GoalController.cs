@@ -8,7 +8,11 @@ public class GoalController : MonoBehaviour {
 
 	public GameObject[] sheeps;
 
-	void Start() {
+    public GameObject levelEndDialog;
+
+    public GameObject theCamera;
+    
+    void Start() {
 		sheepsArrived = new bool[10];
     }
 
@@ -25,9 +29,14 @@ public class GoalController : MonoBehaviour {
 				Debug.Log("All the sheeps are in the goal zone");
 				int score = calculateSickness();
 				Debug.Log("Player scored " + score + " out of 1000");
-				//finishlevel
 
-			}
+                levelEndDialog.SetActive(true);
+
+                theCamera.transform.position = new Vector3(0f, 10f, -10f);
+                
+                theCamera.transform.LookAt(levelEndDialog.transform.position);
+
+            }
         }
     }
 

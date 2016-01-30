@@ -7,11 +7,6 @@ public class InfectionController : MonoBehaviour {
 
     public int moveSpeed;
 
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
