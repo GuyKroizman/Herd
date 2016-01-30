@@ -8,10 +8,15 @@ public class GoalController : MonoBehaviour {
 
 	public GameObject[] sheeps;
 
-	void Start() {
+    public GameObject levelEndDialog;
+
+    public GameObject theCamera;
+
+    public string nextLevelName;
+    
+    void Start() {
 		sheepsArrived = new bool[10];
-		// the defualt value of bool is false
-	}
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -20,31 +25,54 @@ public class GoalController : MonoBehaviour {
 			int sheepNum = getSheepNum(collision.collider.name);
             sheepsArrived[sheepNum] = true;
 
-			Debug.Log("Sheep" + sheepNum + " is in the goal zone");
+			//Debug.Log("Sheep" + sheepNum + " is in the goal zone");
 
 			if (allSheep()) {
 				Debug.Log("All the sheeps are in the goal zone");
 				int score = calculateSickness();
 				Debug.Log("Player scored " + score + " out of 1000");
-				//finishlevel
 
-			}
+                levelEndDialog.SetActive(true);
+
+                theCamera.transform.position = new Vector3(0f, 10f, -10f);
+                
+                theCamera.transform.LookAt(levelEndDialog.transform.position);
+                
+
+                Application.LoadLevel(nextLevelName);
+
+            }
         }
     }
 
+
+    
     void OnCollisionExit(Collision collision)
     {
-		if (collision.collider.name.Contains("Sheep")){
-			int sheepNum = getSheepNum(collision.collider.name);
-			sheepsArrived[sheepNum] = false;
+        if (!collision.collider.name.Contains("Sheep")) {
+            return;
+        }
 
-			Debug.Log("Sheep" + sheepNum + " has left the goal zone");
+        int sheepNum = getSheepNum(collision.collider.name);
+
+        bool reallyWithinGoal = false;
+        if(sheeps[sheepNum].transform.position.x > 3 &&
+            sheeps[sheepNum].transform.position.z > 3)
+        {
+            reallyWithinGoal = true;
+        }
+
+		if (!reallyWithinGoal)
+        {			
+			sheepsArrived[sheepNum] = false;            
+
+			//Debug.Log("Sheep" + sheepNum + " has left the goal zone");
 		}
     }
 
 
 	bool allSheep () {
-		// goes over the sheeps array, returns true iff all the array is true (i.e.  all sheeps are in the goal zone)
+		// goes over the sheeps array, returns true if all the array is true (i.e.  all sheeps are in the goal zone)
 		int i;
 		for (i=0; i<10; i++) {
 			if (!sheepsArrived[i]) {
@@ -70,8 +98,10 @@ public class GoalController : MonoBehaviour {
 		int i;
 		int sum = 0;
 
+
 		for(i=0; i<10; i++){
-			sickness[i] = sheeps[i].renderer.material.color.r * 100;
+            
+			sickness[i] = sheeps[i].GetComponent<Renderer>().material.color.r * 100;
 			sum += Convert.ToInt32(sickness[i]);
 		}
 
