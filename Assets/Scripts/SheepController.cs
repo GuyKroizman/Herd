@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class SheepController : MonoBehaviour {
 
@@ -22,7 +23,8 @@ public class SheepController : MonoBehaviour {
         if(collision.collider.name == "Infection1")
         {
             Renderer renderer = GetComponent<Renderer>();
-            Color jeff = new Color(renderer.material.color.r - sickTendancy, 1f, renderer.material.color.b - sickTendancy);
+			float newColorFloat = Math.Max(0f, renderer.material.color.r - sickTendancy);
+			Color jeff = new Color(newColorFloat, 1f, newColorFloat);
             renderer.material.color = jeff;
         }
     }
