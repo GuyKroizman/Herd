@@ -13,6 +13,8 @@ public class GoalController : MonoBehaviour {
     public GameObject theCamera;
 
     public string nextLevelName;
+
+    private bool levelCompleted = false;
     
     void Start() {
 		sheepsArrived = new bool[10];
@@ -37,10 +39,8 @@ public class GoalController : MonoBehaviour {
                 theCamera.transform.position = new Vector3(0f, 10f, -10f);
                 
                 theCamera.transform.LookAt(levelEndDialog.transform.position);
-                
-                if(nextLevelName != "None")
-                    Application.LoadLevel(nextLevelName);
 
+                levelCompleted = true;
             }
         }
     }
@@ -107,4 +107,14 @@ public class GoalController : MonoBehaviour {
 
 		return sum;
 	}
+
+    void Update()
+    {
+        if (Input.GetKeyUp("enter") || Input.GetKeyUp("space"))
+        {
+            if(nextLevelName != "None")
+                Application.LoadLevel(nextLevelName);
+        }
+            
+    }
 }
