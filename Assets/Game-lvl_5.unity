@@ -3111,7 +3111,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 150618, guid: 25b3c3fcb9f87824e964f7368ae3d628, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11470040, guid: 25b3c3fcb9f87824e964f7368ae3d628, type: 2}
       propertyPath: m_Text
