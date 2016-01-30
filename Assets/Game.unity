@@ -998,7 +998,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shepard: {fileID: 1010484398}
-  Goal: {fileID: 1147840105}
 --- !u!1 &911755818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,6 +1311,7 @@ MonoBehaviour:
   - {fileID: 1926079027}
   levelEndDialog: {fileID: 1574480415}
   theCamera: {fileID: 553529647}
+  nextLevelName: Game-lvl_2
 --- !u!23 &1147840107
 MeshRenderer:
   m_ObjectHideFlags: 0

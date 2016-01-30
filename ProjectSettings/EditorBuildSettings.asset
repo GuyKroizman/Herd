@@ -9,3 +9,11 @@ EditorBuildSettings:
     path: Assets/GameMenu.unity
   - enabled: 1
     path: Assets/Game.unity
+  - enabled: 1
+    path: Assets/Game-lvl_2.unity
+  - enabled: 1
+    path: Assets/Game-lvl_3.unity
+  - enabled: 1
+    path: Assets/Game-lvl_4.unity
+  - enabled: 1
+    path: Assets/Game-lvl_5.unity
