@@ -10,8 +10,7 @@ public class GoalController : MonoBehaviour {
 
 	void Start() {
 		sheepsArrived = new bool[10];
-		// the defualt value of bool is false
-	}
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -44,7 +43,7 @@ public class GoalController : MonoBehaviour {
 
 
 	bool allSheep () {
-		// goes over the sheeps array, returns true iff all the array is true (i.e.  all sheeps are in the goal zone)
+		// goes over the sheeps array, returns true if all the array is true (i.e.  all sheeps are in the goal zone)
 		int i;
 		for (i=0; i<10; i++) {
 			if (!sheepsArrived[i]) {
@@ -70,8 +69,10 @@ public class GoalController : MonoBehaviour {
 		int i;
 		int sum = 0;
 
+
 		for(i=0; i<10; i++){
-			sickness[i] = sheeps[i].renderer.material.color.r * 100;
+            
+			sickness[i] = sheeps[i].GetComponent<Renderer>().material.color.r * 100;
 			sum += Convert.ToInt32(sickness[i]);
 		}
 

@@ -1059,6 +1059,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee7f5a64cf5c18498892737d668091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sheeps:
+  - {fileID: 1968681925}
+  - {fileID: 261861978}
+  - {fileID: 518221709}
+  - {fileID: 3924368}
+  - {fileID: 1740791314}
+  - {fileID: 2096700090}
+  - {fileID: 520370840}
+  - {fileID: 1739593175}
+  - {fileID: 1926079027}
+  - {fileID: 487050281}
 --- !u!23 &1147840107
 MeshRenderer:
   m_ObjectHideFlags: 0
