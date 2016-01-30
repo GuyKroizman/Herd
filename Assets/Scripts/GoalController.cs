@@ -19,7 +19,7 @@ public class GoalController : MonoBehaviour {
 			int sheepNum = getSheepNum(collision.collider.name);
             sheepsArrived[sheepNum] = true;
 
-			Debug.Log("Sheep" + sheepNum + " is in the goal zone");
+			//Debug.Log("Sheep" + sheepNum + " is in the goal zone");
 
 			if (allSheep()) {
 				Debug.Log("All the sheeps are in the goal zone");
@@ -31,13 +31,28 @@ public class GoalController : MonoBehaviour {
         }
     }
 
+
+    
     void OnCollisionExit(Collision collision)
     {
-		if (collision.collider.name.Contains("Sheep")){
-			int sheepNum = getSheepNum(collision.collider.name);
-			sheepsArrived[sheepNum] = false;
+        if (!collision.collider.name.Contains("Sheep")) {
+            return;
+        }
 
-			Debug.Log("Sheep" + sheepNum + " has left the goal zone");
+        int sheepNum = getSheepNum(collision.collider.name);
+
+        bool reallyWithinGoal = false;
+        if(sheeps[sheepNum].transform.position.x > 3 &&
+            sheeps[sheepNum].transform.position.z > 3)
+        {
+            reallyWithinGoal = true;
+        }
+
+		if (!reallyWithinGoal)
+        {			
+			sheepsArrived[sheepNum] = false;            
+
+			//Debug.Log("Sheep" + sheepNum + " has left the goal zone");
 		}
     }
 
