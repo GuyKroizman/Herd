@@ -38,8 +38,8 @@ public class GoalController : MonoBehaviour {
                 
                 theCamera.transform.LookAt(levelEndDialog.transform.position);
                 
-
-                Application.LoadLevel(nextLevelName);
+                if(nextLevelName != "None")
+                    Application.LoadLevel(nextLevelName);
 
             }
         }
