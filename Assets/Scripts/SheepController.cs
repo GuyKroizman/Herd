@@ -16,14 +16,32 @@ public class SheepController : MonoBehaviour {
 	public AudioSource abba1;
 	public AudioSource abba2;
 
+    private Rigidbody rigidbody;
 
-	private int intervals = 0;
+    private int intervals = 0;
+
+
+    void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+    
 
     // Update is called once per frame
     void Update () {
-        Vector3 directionTowardsPlayer = (Shepard.position - transform.position).normalized;
 
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        Vector3 directionTowardsPlayer;
+        if (rigidbody.position.x > 3 && rigidbody.position.z > 3 )
+        {
+            directionTowardsPlayer = (new Vector3(4.5f, 0.2f, 4.5f) - transform.position).normalized;
+        }
+        else
+        {
+            directionTowardsPlayer = (Shepard.position - transform.position).normalized;
+        }
+        
+
+        
         rigidbody.AddForce(directionTowardsPlayer * moveSpeed * Time.deltaTime);
 
 
