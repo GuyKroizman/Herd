@@ -2461,7 +2461,7 @@ MonoBehaviour:
   - {fileID: 1926079027}
   levelEndDialog: {fileID: 2050570450}
   theCamera: {fileID: 553529647}
-  nextLevelName: None
+  nextLevelName: GameMenu
 --- !u!23 &1147840107
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -112,8 +112,9 @@ public class GoalController : MonoBehaviour {
     {
         if (Input.GetKeyUp("enter") || Input.GetKeyUp("space"))
         {
-            if(nextLevelName != "None")
-                Application.LoadLevel(nextLevelName);
+            
+            Application.LoadLevel(nextLevelName);
+            
         }
             
     }
